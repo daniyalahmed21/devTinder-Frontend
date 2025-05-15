@@ -1,9 +1,15 @@
 import axios from "axios";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addUsers } from "../src/utils/userSlice";
+import { useNavigate } from "react-router";
 
 const Login = () => {
   const [emailId, setEmailId] = useState("abc@gmail.com");
   const [password, setPassword] = useState("abc123");
+  const [error,setError] = useState("")
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const handleLogin = async (e) => {
     e.preventDefault(); // prevent form submission reload
   
@@ -14,11 +20,12 @@ const Login = () => {
       },{
         withCredentials:true
       });
-      console.log("Login successful:", response.data);
-      // You can redirect or store token here
+      
+    dispatch(addUsers(response.data))
+    navigate("/feed")
     } catch (error) {
       console.error("Login failed:", error.response?.data || error.message);
-      alert("Login failed. Please check your credentials.");
+      setError("Login failed. Please check your credentials.")
     }
   };
 
@@ -71,6 +78,7 @@ const Login = () => {
         <button type="submit" className="w-full bg-gray-600 hover:bg-gray-700 text-white font-medium py-2.5 rounded-lg transition-colors">
           Login
         </button>
+        <p className="text-red-400">{error}</p>
       </form>
 
       <div className="mt-6 text-center text-sm text-gray-600">
