@@ -7,6 +7,7 @@ import { removeUser } from "../src/utils/userSlice";
 const Navbar = () => {
   const dispatch= useDispatch()
   const navigate = useNavigate();
+  const user = useSelector((state)=>state.user)
 
   const handleLogout =async( )=>{
     try {
@@ -17,12 +18,11 @@ const Navbar = () => {
       console.log(error)
     }
   }
-  const user = useSelector((state)=>state.user)
   return (
     <div className="navbar bg-base-100 shadow-sm rounded-full px-6">
       <div className="flex-1 ">
         <a className="font-bold rounded-full text-2xl text-gray-900">
-           Streamify
+           Dev-Match
         </a>
       </div>
       <div className="flex gap-2">
@@ -36,7 +36,7 @@ const Navbar = () => {
             <div className="w-10 rounded-full">
            { user &&  <img
                 alt="Tailwind CSS Navbar component"
-                src="https://xsgames.co/randomusers/assets/avatars/male/78.jpg"
+                src={user.image}
               />}
             </div>
           </div>
@@ -47,11 +47,10 @@ const Navbar = () => {
             <li>
               <Link to="/profile" className="justify-between">
                 Profile
-                <span className="badge">New</span>
               </Link>
             </li>
             <li>
-              <a>Settings</a>
+              <Link to="/feed">Feed</Link>
             </li>
             <li>
               <a onClick={handleLogout}>Logout</a>

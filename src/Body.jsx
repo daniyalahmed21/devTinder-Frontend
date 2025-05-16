@@ -29,12 +29,13 @@ const Body = () => {
   useEffect(() => {
     fetchUser();
   }, []);
+
   return (
     <div className="min-h-screen flex flex-col">
       <header className="mt-5 max-w-4xl mx-auto w-full">
         <Navbar />
       </header>
-      <main className="flex justify-center items-center max-w-4xl mx-auto w-full mt-10">
+      <main className="flex justify-center items-center max-w-4xl mx-auto w-full mt-3">
         <Outlet />
       </main>
 

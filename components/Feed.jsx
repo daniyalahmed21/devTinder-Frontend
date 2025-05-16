@@ -36,7 +36,7 @@ const Feed = () => {
   }
 
   return (
-    <div>
+    <div className="mb-20">
       {feed.length === 0 ? (
         <div>No feed available</div>
       ) : (

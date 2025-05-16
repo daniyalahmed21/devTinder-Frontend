@@ -1,26 +1,29 @@
 import React from "react";
 
-const Card = () => {
+const Card = ({ user }) => {
   return (
-    <div className="card bg-base-100 w-96 shadow-sm">
+    <div  className="card bg-base-100 mb-2 w-80 h-130 shadow-sm">
       <figure>
-        <img
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-          alt="Shoes"
-        />
+        <img src={user.image} alt="Shoes" />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">
-        mfsndbh
-          <div className="badge badge-secondary">NEW</div>
+        <div className=" text-2xl ">{user.firstName + " " +  user.lastName}</div>
+        <h2 className="card-title mt-2  mb-2">
+          <div className="flex gap-2 flex-wrap">
+            {user.skills.map((skill, index) => (
+              <span
+                key={index}
+                className="bg-blue-100  text-xs text-black px-3 py-2 rounded-full "
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
         </h2>
-        <p>
-          A card component has a figure, a body part, and inside body there are
-          title and actions parts
-        </p>
+        <p>{user.about}</p>
         <div className="card-actions justify-end">
-          <div className="badge badge-outline">Fashion</div>
-          <div className="badge badge-outline">Products</div>
+          <button className="btn  btn-soft btn-success">Interested</button>
+          <button className="btn  btn-soft btn-error ">Ignore</button>
         </div>
       </div>
     </div>

@@ -1,12 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 import Navbar from "../components/Navbar";
-import Body from "./body";
 import Login from "../components/Login";
 import "./app.css";
 import store from "./utils/store";
 import { Provider } from "react-redux";
 import Profile from "../components/Profile";
 import Feed from "../components/feed";
+import Body from "./Body";
 
 function App() {
   return (
